@@ -1,0 +1,21 @@
+ul{
+        list-style-type: none;
+        text-align: center;
+        display: inline-flex;
+}
+
+li{
+        background-color: rgb(95, 18, 18);
+        float:left;
+        text-align: center;
+        width: 2rem;
+        margin: 0 4px;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        color: lightcyan;
+}
+
+li:hover{
+        color:rgb(7, 7, 7);
+        background-color: rgb(250, 250, 250);
+        cursor: pointer;
+}

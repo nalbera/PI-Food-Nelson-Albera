@@ -1,0 +1,55 @@
+@import url("https://fonts.googleapis.com/css?family=Lato:200");
+
+
+.bkg{
+        width: 100vw;
+        height: 100vh;
+        backdrop-filter: blur(16px);
+        background-color: #77777770;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        background-image: url('./fondo.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;
+
+}
+
+.container{
+        width: 70vw;
+        height: 30vh;
+        margin: 15vh 15vw;
+        top:0;
+        overflow: hidden;
+        display: grid;
+        background-color: #c1a3b473;
+        margin-top: 260px;
+        border-radius: 10px;
+}
+
+.title {
+        padding-left: 0.375em;
+        font-size: 3.6em;
+        font-family: Lato, sans-serif;
+        font-weight: 200;
+        letter-spacing: 0.75em;
+        color: rgb(0, 0, 0);
+        text-align: center;
+       
+ }
+
+ .boton{
+        text-decoration: none;
+        
+        font-size: 18px;
+        color: #000000;
+        background-color: #777777;
+        border-radius: 6px;
+        
+}
+
+.boton:hover{
+      color:rgb(2, 49, 2)
+      
+}

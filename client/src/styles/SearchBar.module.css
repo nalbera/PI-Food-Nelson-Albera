@@ -1,0 +1,22 @@
+.contenedor{
+        display: flex;
+        align-items: center;
+}
+
+.txtBox{
+        border-style: double;
+        height: -webkit-fill-available;
+}
+
+.btn{
+        border-style: none;
+        display: inline-block;
+        background-color: rgb(95, 18, 18);
+        color:white;
+        height: 22px;
+}
+
+.btn:hover{
+        color:rgb(82, 83, 82);
+        cursor: pointer;
+}
