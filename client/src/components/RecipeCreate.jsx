@@ -4,17 +4,6 @@ import {postRecipe, getRecipeType} from '../actions/index';
 import { useDispatch, useSelector } from "react-redux";
 import styles from '../styles/RecipeCreate.module.css';
 
-/****control de errores */
-function validar(input){
-        let err = {};
-        if(!input.name){
-                err.name="Debe ingresar un Nombre.";
-        }else if(!input.resume){
-                err.resume="Debe ingresar un Resumen."
-        }
-
-        return err;
-}
 
 function RecipeCreate() {
         const dispatch = useDispatch();
@@ -22,6 +11,22 @@ function RecipeCreate() {
         const history = useHistory();
         const [err, setErr] = useState({});
 
+        const [btnSend, setBtnSend] = useState(false);
+       
+        /****control de errores */
+        function validar(input){
+                let err = {};
+                if(!input.name){
+                        err.name="Debe ingresar un Nombre.";
+                        setBtnSend(false);
+                }else if(!input.resume){
+                        err.resume="Debe ingresar un Resumen.";
+                        setBtnSend(false);
+                }else{
+                        setBtnSend(true);
+                }
+                return err;
+        }
         const [input, setInput] = useState({
                 name: "",
                 score:"",
@@ -37,7 +42,7 @@ function RecipeCreate() {
                         ...input,
                         [e.target.name]: e.target.value,
                 })
-                console.log(input);
+                
                 setErr(validar({
                         ...input,
                         [e.target.name]: e.target.value,
@@ -57,25 +62,28 @@ function RecipeCreate() {
 
         function handleSubmit(e){
                 e.preventDefault();
-                console.log(input);
-                //Object.entries(input.diets).map((data) => input.diets.push(data[0]));
-                dispatch(postRecipe(input));
-                alert("Receta creada")
-                setInput({
-                        name: "",
-                        score:"",
-                        healthylevel:"",
-                        resume: "",
-                        stepbystep:"",
-                        image:"",
-                        diets:[],  
-                })
-                history.push('/home');
+                if(!input.diets.length){
+                        return alert("Debe cargar tipo de dieta")
+                }else{
+                    if(!input.image) input.image="https://cdn.pixabay.com/photo/2014/12/21/23/28/recipe-575434_960_720.png"
+                    dispatch(postRecipe(input));
+                    alert("Receta creada")
+                    setInput({
+                          name: "",
+                          score:"",
+                          healthylevel:"",
+                          resume: "",
+                          stepbystep:"",
+                          image:"",
+                          diets:[],  
+                        })
+                        history.push('/home');
+                }
         }
         
         useEffect(() => {
                 dispatch(getRecipeType());
-        },[]);
+        },[dispatch]);
 
         
         return (
@@ -88,7 +96,7 @@ function RecipeCreate() {
                                         <input type="text" value={input.name} name="name"onChange={(e) => handleChange(e)}/>
                                         {
                                                 err.name && (
-                                                        <p className="error">{err.name}</p>
+                                                        <p className={styles.error}>{err.name}</p>
                                                 )
                                         }
                                 </div>
@@ -105,7 +113,7 @@ function RecipeCreate() {
                                         <input type="text" value={input.resume} name="resume"onChange={(e) => handleChange(e)}/>
                                         {
                                                 err.resume && (
-                                                        <p className="error">{err.resume}</p>
+                                                        <p className={styles.error}>{err.resume}</p>
                                                 )
                                         }
                                 </div>
@@ -122,7 +130,9 @@ function RecipeCreate() {
                                         <select onChange={(e) => handleSelect(e)} name="diets">
                                                 {
                                                        types.map((t) => (
-                                                            <option value={t.name}>{t.name}</option>
+                                                            <React.Fragment key={t.id}>
+                                                                <option value={t.name} key={t.id}>{t.name}</option>
+                                                            </React.Fragment>
                                                         ))
                                                         
                                                 }
@@ -131,13 +141,13 @@ function RecipeCreate() {
                                 </div>
                                 <div className={styles.footer}>
                                         <div>
-                                                <button type="submit">Crear Receta</button>
+                                               <button className={styles._rcpbotton} type="submit" disabled={!btnSend}>Crear Receta</button>
                                         </div>
                                         <div>
                                                 <Link to='/home'><button>Volver</button></Link>
                                         </div>
                                 </div>
-                        
+
                         </form>
                         </div>
                 </div>

@@ -20,7 +20,7 @@ export function getNameRecipe(payload){
                                 payload: json.data
                         })
                 }catch(error){
-                        console.log(error);
+                       console.log(error);
                 }
 
         }

@@ -1,5 +1,5 @@
 import React from "react";
-import styles from '../styles/Paged.module.css';
+import  styles from "../styles/Paged.module.css";
 
 function Paged({recipeXPage, allRecipes, paginado}) {
         const pageNumbers = [];
@@ -10,11 +10,11 @@ function Paged({recipeXPage, allRecipes, paginado}) {
 
         return (
                 <nav>
-                        <ul className=''>
+                        <ul className={styles.barra}>
                                 {
                                         pageNumbers && pageNumbers.map(num => (
-                                                <li className='' key={num}>
-                                                        <a onClick={() => paginado(num)}>{num}</a>
+                                                <li className={styles.btnBarra} key={num}>
+                                                        <button onClick={() => paginado(num)}>{num}</button>
                                                 </li>
                                         ))
                                 }

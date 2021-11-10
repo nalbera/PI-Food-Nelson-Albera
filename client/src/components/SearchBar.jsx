@@ -16,9 +16,10 @@ export default function SearchBar(){
         function handleSubmit(e){
                 e.preventDefault();
                 dispatch(getNameRecipe(name));
-                setName();
+               
         }
         
+
         return(
                 <div className={styles.contenedor}>
                    

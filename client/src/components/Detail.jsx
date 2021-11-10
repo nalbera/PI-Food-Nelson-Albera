@@ -9,15 +9,17 @@ function Detail(props) {
         const dispatch = useDispatch();
         useEffect(() =>{
                 dispatch(getDetail(props.match.params.id))
-        },[dispatch])
+        },[dispatch, props.match.params.id])
 
         const recipe = useSelector((state) => state.detail)
-        console.log(recipe);
+
+                
         return (
                 <div className={styles.contenedor}>
                         {
                                 recipe.length > 0 ? 
                                         <div className={styles.box}>
+                                                
                                                 <h1>{recipe[0].name}</h1>
                                                 <img src={recipe[0].image} alt="" width="200px" height="200px"/>
                                                 <p>Resumen: {recipe[0].resume.replace(/<[^>]*>?/g, '')}</p>

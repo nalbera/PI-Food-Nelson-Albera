@@ -29,3 +29,7 @@ button:hover{
         color:rgb(82, 83, 82);
         cursor: pointer;
 }
+
+.a:link, a:visited, a:active {
+        text-decoration: none;
+}

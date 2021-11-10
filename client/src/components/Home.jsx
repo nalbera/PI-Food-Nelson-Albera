@@ -2,7 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import {useDispatch, useSelector} from "react-redux";
 import { getAllRecipes, orderByAlphabetics, orderByScore, setFilterByDietTypes } from "../actions";
-import {Link} from 'react-router-dom';
+import {NavLink} from 'react-router-dom';
 import Card from "./Card";
 import Paged from "./Paged";
 import SearchBar from "./SearchBar";
@@ -12,9 +12,10 @@ export default function Home(){
 
         const dispatch = useDispatch();
         const allRecipes = useSelector((state) => state.recipes)
-
         const [actualPage, setActualPage] = useState(1); //currentpage
+                           // eslint-disable-next-line 
         const [recipeXPage, setRecipeXPage] = useState(9);
+              // eslint-disable-next-line
         const [orden,setOrden] = useState('');
         const indexLastRecipe = actualPage * recipeXPage;
         const indexFirstRecipe = indexLastRecipe - recipeXPage;
@@ -79,7 +80,7 @@ export default function Home(){
                                     <option value="whole 30">Whole 30</option>
                             </select>
                             <SearchBar />
-                            <Link to ='/recipe'><button>Nueva Receta</button></Link>
+                            <NavLink to ='/recipe'><button>Nueva Receta</button></NavLink>
                          </div>
                             <Paged recipeXPage={recipeXPage} allRecipes={allRecipes.length} paginado={paginado} />
                             <button onClick={e => {handleClick(e)}}>Recargar Recetas</button>
@@ -87,13 +88,16 @@ export default function Home(){
                             {
                              
                              actualRecipes && actualRecipes?.map(element => {
+                                     
                                      return(
+                                        <React.Fragment key={element.id}>     
                                         <div>
-                                            <Link to={'/recipes/' + element.id}>
-                                               <Card image={element.image? element.image : <img src="https://cdn.pixabay.com/photo/2014/12/21/23/28/recipe-575434_960_720.png"/>} name={element.name} diet={element.diets} />
+                                            <NavLink className={styles.a} to={'/recipes/' + element.id}>
+                                               <Card image={element.image} name={element.name} diet={element.createdInDb ? element.DietTypes.map((dt) => dt.name) : element.diets}  key={element.id}/>
                                     
-                                 </Link>
-                                </div>
+                                            </NavLink>
+                                        </div>
+                                        </React.Fragment>
                               );
                             })}
                           </span> 

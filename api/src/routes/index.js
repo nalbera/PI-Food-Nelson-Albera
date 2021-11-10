@@ -18,22 +18,26 @@ const Op = Sequelize.Op;
 // Ejemplo: router.use('/auth', authRouter);
 
 const getApiInfo = async () =>{
-        const apiUrl = await axios.get(`https://api.spoonacular.com/recipes/complexSearch/?apiKey=${API_KEY}&addRecipeInformation=true&number=100`);
+        try{
+                const apiUrl = await axios.get(`https://api.spoonacular.com/recipes/complexSearch/?apiKey=${API_KEY}&addRecipeInformation=true&number=100`);
 
-        const apiInfo = await apiUrl.data.results.map(info => {
-                return {
-                        name: info.title,
-                        resume: info.summary,
-                        score: info.spoonacularScore,
-                        healthylevel: info.healthScore,
-                        stepByStep: info.analyzedInstructions.map(obj => obj.steps.map(obj2 => obj2.step)),
-                        image: info.image,
-                        id :info.id,
-                        diets: info.diets.map((diet) => diet),
+                const apiInfo = await apiUrl.data.results.map(info => {
+                        return {
+                                name: info.title,
+                                resume: info.summary,
+                                score: info.spoonacularScore,
+                                healthylevel: info.healthScore,
+                                stepByStep: info.analyzedInstructions.map(obj => obj.steps.map(obj2 => obj2.step)),
+                                image: info.image,
+                                id :info.id,
+                                diets: info.diets.map((diet) => diet),
                         
-                }
-        })
-        return apiInfo;
+                        }
+                 })
+                 return apiInfo;
+        }catch(err){
+                console.log(err);
+        }
 }
 
 const getDbInfo = async () =>{
@@ -105,7 +109,7 @@ router.get('/types', async (req, res) => {
    
 router.post('/recipe', async (req, res) => {
        
-        try{
+     try{
         let {
                 name, 
                 score,
@@ -138,7 +142,7 @@ router.post('/recipe', async (req, res) => {
                 }
         })
         newRecipe.addDietType(dietDb);
-        res.send("Receta Cargada con exito");
+        res.status(200).send("Receta Cargada con exito");
       } catch (error) {
                 console.log(error)
         }

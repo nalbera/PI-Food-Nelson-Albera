@@ -31,3 +31,21 @@
         justify-content: space-evenly;
         margin: 25px;
 }
+
+._rcpbotton{
+        color:black
+}
+._rcpbotton:disabled{
+        background-color:rgb(221, 188, 188);
+        color: lightcyan;
+        
+}
+
+._rcpbotton:enabled{
+      background-color: rgb(95, 18, 18);
+      color:white;
+}
+
+.error{
+        color:rgb(190, 38, 38);
+}

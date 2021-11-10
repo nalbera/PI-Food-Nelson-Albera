@@ -25,7 +25,7 @@ function rootReducer (state = initialState, action){
                         })
             
                         allRecipes.forEach(e => {
-                            if (e.hasOwnProperty('diets') && e.diets.find(c => c.name === action.payload)) {
+                            if (e.hasOwnProperty('DietTypes') && e.DietTypes.map(c => c.name === action.payload)) {
                                 dietsDB.push(e)
                             }
                         })
@@ -35,7 +35,8 @@ function rootReducer (state = initialState, action){
                                 ...state,
                                 recipes: find
                             }
-                        }
+                        };
+                        break;
                         
                 case "ORDER_BY_SCORE":
                         let orderArray = action.payload==="asc" ? 
@@ -104,8 +105,10 @@ function rootReducer (state = initialState, action){
                                 ...state,
                                 detail : action.payload,
                         }
-                 default:
+                 default:{
+
                          return state;
+                 }
         }
 
 }
