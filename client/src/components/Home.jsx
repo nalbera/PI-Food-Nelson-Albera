@@ -11,12 +11,12 @@ import styles from '../styles/Home.module.css';
 export default function Home(){
 
         const dispatch = useDispatch();
-        const allRecipes = useSelector((state) => state.recipes)
+        const allRecipes = useSelector((state) => state.recipes)//GLOBAL
         const [actualPage, setActualPage] = useState(1); //currentpage
                            // eslint-disable-next-line 
         const [recipeXPage, setRecipeXPage] = useState(9);
               // eslint-disable-next-line
-        const [orden,setOrden] = useState('');
+        const [orden,setOrden] = useState('');//LOCAL
         const indexLastRecipe = actualPage * recipeXPage;
         const indexFirstRecipe = indexLastRecipe - recipeXPage;
         const actualRecipes = allRecipes.slice(indexFirstRecipe,indexLastRecipe);//guardo todas las recetas por pagina

@@ -14,9 +14,9 @@ export default function LandingPage(){
    return(
                 <div className={styles.bkg}>
                      <div className={styles.container}>
-                        <h1 className={styles.title}>Recetario</h1>
+                        <h1 className={styles.title}>Recipe book</h1>
                         <Link to='/home'>
-                              <button className={styles.boton}>Ingresar</button>  
+                              <button className={styles.boton}>Get in</button>  
                         </Link>
                      </div>
                 </div>

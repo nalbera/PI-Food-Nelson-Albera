@@ -10,23 +10,29 @@
         font-size: 200;
         border-color: rgb(227, 230, 227);
         border-style: solid;
-        /* width: auto; */
         height: 360px;
-
+        border-radius: 7px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-content: space-around;
+        align-items: baseline;
         
+}
+.descript{
+        color: #2C3E50;
+        font-family: 'Dosis', sans-serif;
 }
 
 .title{
         font-family: 'Dosis', sans-serif;
         font-size: 400;
         text-decoration:none;
-        
-        
+        color: #2C3E50 ;
 }
 
 .footer{
         width: 400px;
         height: 30px;
-        background-color: rgb(178, 37, 32);
-        
+        /* background-color: rgb(178, 37, 32); */     
 }
