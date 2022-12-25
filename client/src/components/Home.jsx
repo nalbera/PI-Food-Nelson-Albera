@@ -55,7 +55,7 @@ export default function Home(){
         return(
                 <div>
                         
-                        <h1>Recetario</h1>
+                        <h1>Recipe Book</h1>
                        
                         <div>
                            <div className={styles.controls}>
@@ -80,10 +80,10 @@ export default function Home(){
                                     <option value="whole 30">Whole 30</option>
                             </select>
                             <SearchBar />
-                            <NavLink to ='/recipe'><button>Nueva Receta</button></NavLink>
+                            <NavLink to ='/recipe'><button>New Recipe</button></NavLink>
                          </div>
                             <Paged recipeXPage={recipeXPage} allRecipes={allRecipes.length} paginado={paginado} />
-                            <button onClick={e => {handleClick(e)}}>Recargar Recetas</button>
+                            <button onClick={e => {handleClick(e)}}>Refill Recipes</button>
                             <span className={styles.cards}>
                             {
                              

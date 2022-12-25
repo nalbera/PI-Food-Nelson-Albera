@@ -1,5 +1,5 @@
 const { getAllRecipie, getAllDataApi } = require('./driverConnection');
-
+const {Recipe, DietType} = require('../db');
 const controller = {
     getRecipes: async (req, res) => {
         
@@ -25,7 +25,7 @@ const controller = {
 
     getTypes: async (req, res) => {
         
-        const allData = getAllDataApi();
+        const allData = await getAllDataApi();
 
         const diet = allData.data.results.map(elemento => elemento.diets)
         const diet2 = []
