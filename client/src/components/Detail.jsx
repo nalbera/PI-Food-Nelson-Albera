@@ -26,15 +26,15 @@ function Detail(props) {
               </div>
               <div className={styles.resume}>
                 <p>Resume</p>
-                <textarea name="" id="" cols="60" rows="6" readOnly>
-                        {recipe[0].resume.replace(/<[^>]*>?/g, '')}
-                </textarea>
+                <textarea name="" id="" cols="60" rows="6" readOnly
+                  value={recipe[0].resume.replace(/<[^>]*>?/g, '')}
+                ></textarea>
               </div>
               <div className={styles.pastpast}>
                 <p>Step by Step</p>
-                <textarea name="" id="" cols="60" rows="6" readOnly>
-                        {!recipe[0].createdInDb ? recipe[0].stepByStep?.map((step) => step) : recipe[0].stepbystep}
-                </textarea>
+                <textarea name="" id="" cols="60" rows="6" readOnly
+                    value={!recipe[0].createdInDb ? recipe[0].stepByStep?.map((step) => step) : recipe[0].stepbystep}
+                ></textarea>
               </div>
             </div>
           </section>
