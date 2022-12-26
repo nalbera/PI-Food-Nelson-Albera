@@ -1,5 +1,7 @@
 const { getAllRecipie, getAllDataApi } = require('./driverConnection');
 const {Recipe, DietType} = require('../db');
+const {Op} = require('sequelize');
+
 const controller = {
     getRecipes: async (req, res) => {
         
@@ -64,10 +66,10 @@ const controller = {
    
            let newRecipe= await Recipe.create({
                    name, 
-                   score,
+                   score: parseInt(score),
                    resume,
                    stepbystep: stepByStep,
-                   healthylevel,
+                   healthylevel: parseInt(healthylevel),
                    image,
            })
    
