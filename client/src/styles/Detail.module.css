@@ -43,7 +43,7 @@ body{
     
 .info textarea{
         resize: none;
-        margin-top: -10px;
+        margin-top: -15px;
         border: none;
 }
     
@@ -54,7 +54,7 @@ body{
         margin-top: -20px;
 }
 .pastpast{
-       margin-top: -10px;
+       margin-top: -15px;
 }
     
 .footer{
