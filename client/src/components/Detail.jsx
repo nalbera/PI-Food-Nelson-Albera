@@ -6,12 +6,14 @@ import styles from "../styles/Detail.module.css";
 
 function Detail(props) {
   const dispatch = useDispatch();
+  const recipe = useSelector((state) => state.detail);
+
   useEffect(() => {
     dispatch(getDetail(props.match.params.id));
   }, [dispatch, props.match.params.id]);
 
-  const recipe = useSelector((state) => state.detail);
-  console.log(recipe);
+  
+  
   return (
     <>
       {recipe.length > 0 ? (
