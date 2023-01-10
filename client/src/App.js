@@ -17,7 +17,6 @@ function App() {
           <Route path='/recipes/:id' component={Detail} />
          
         </Switch>
-        {/* <h1>Henry Food</h1> */}
       </div>
     </BrowserRouter>
   );

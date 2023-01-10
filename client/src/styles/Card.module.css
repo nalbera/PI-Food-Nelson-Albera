@@ -16,8 +16,7 @@
         flex-wrap: wrap;
         justify-content: center;
         align-content: space-around;
-        align-items: baseline;
-        
+        align-items: baseline;       
 }
 .descript{
         color: #2C3E50;
@@ -34,5 +33,6 @@
 .footer{
         width: 400px;
         height: 30px;
+        display: block;
         /* background-color: rgb(178, 37, 32); */     
 }

@@ -23,7 +23,7 @@ export default function SearchBar(){
         return(
                 <div className={styles.contenedor}>
                    
-                        <input className={styles.txtBox} type="text" placeholder="Buscar...." onChange={(e) => handleInputChange(e) }/>
+                        <input className={styles.txtBox} type="text" placeholder="Search...." onChange={(e) => handleInputChange(e) }/>
                         <button className={styles.btn} type='submit' onClick={(e) => handleSubmit(e)}>Search</button>
                    
                 </div>

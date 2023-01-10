@@ -11,15 +11,15 @@ import styles from '../styles/Home.module.css';
 export default function Home(){
 
         const dispatch = useDispatch();
-        const allRecipes = useSelector((state) => state.recipes)//GLOBAL
-        const [actualPage, setActualPage] = useState(1); //currentpage
+        const allRecipes = useSelector((state) => state.recipes)
+        const [actualPage, setActualPage] = useState(1);
                            // eslint-disable-next-line 
         const [recipeXPage, setRecipeXPage] = useState(9);
               // eslint-disable-next-line
-        const [orden,setOrden] = useState('');//LOCAL
+        const [orden,setOrden] = useState('');
         const indexLastRecipe = actualPage * recipeXPage;
         const indexFirstRecipe = indexLastRecipe - recipeXPage;
-        const actualRecipes = allRecipes.slice(indexFirstRecipe,indexLastRecipe);//guardo todas las recetas por pagina
+        const actualRecipes = allRecipes.slice(indexFirstRecipe,indexLastRecipe);
         const paginado = (pageNumber) =>{
                 setActualPage(pageNumber);
         }
@@ -58,17 +58,20 @@ export default function Home(){
                         <h1>Recipe Book</h1>
                        
                         <div>
-                           <div className={styles.controls}>
+                           <div className={styles.controls}>   
                             <select onChange={e => handleOrderByScore(e)}>
-                                    <option value="asc">Ascendente</option>
-                                    <option value="desc">Descendente</option>
+                                    <option>Order by Score</option>
+                                    <option value="asc">Upward</option>
+                                    <option value="desc">Falling</option>
                             </select> 
                             <select onChange={e => handleOrderByAlpha(e)}>
+                                    <option>Order alphabetically</option>
                                     <option value="A-Z">A-Z</option>
                                     <option value="Z-A">Z-A</option>
                             </select> 
                                 
                             <select onChange={e => handleFilterByDietType(e)}>
+                                    <option value="">Filter by</option>
                                     <option value="gluten free">Gluten Free</option>
                                     <option value="dairy free">Dairy Free</option>
                                     <option value="lacto ovo vegetarian">Lacto ovo vegetarian</option>
