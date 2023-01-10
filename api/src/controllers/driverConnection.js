@@ -16,7 +16,7 @@ const getApiInfo = async () =>{
                     return {
                             name: info.title,
                             resume: info.summary,
-                            score: info.spoonacularScore,
+                            score: info.healthScore,
                             healthylevel: info.healthScore,
                             stepByStep: info.analyzedInstructions.map(obj => obj.steps.map(obj2 => obj2.step)),
                             image: info.image,
